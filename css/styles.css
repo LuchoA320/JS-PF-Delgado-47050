@@ -34,6 +34,7 @@ header {
 
 main {
   height: 100vh;
+  background-color: #eeeeee;
 }
 
 footer {
@@ -72,4 +73,43 @@ footer {
   font-size: medium;
   font-weight: 500;
   transition: 0.8s;
+}
+
+#featuredProducts {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+}
+
+.productCard {
+  width: 15rem;
+  margin-top: 1rem;
+  background-color: #ffff;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  border-radius: 10px;
+  box-shadow: 0 10px 15px rgba(0, 0, 0, 0.3);
+  overflow: hidden;
+}
+.productCard img {
+  width: 15rem;
+  border-radius: 10px;
+  transition: all 0.5s ease;
+}
+.productCard img:hover {
+  transform: scale(1.05);
+}
+.productCard h3 {
+  font-size: 1.15rem;
+  z-index: 100;
+}
+.cardPrice {
+  padding: 10px;
+  display: flex;
+  justify-content: space-around;
+}
+.listPrice {
+  text-decoration: line-through;
+  color: #727272;
 }
