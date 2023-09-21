@@ -27,17 +27,26 @@
           />
         </a>
 
-        <label for="" class="icons">
-          <i class="bx bx-menu"></i>
-        </label>
-
         <nav class="navbar">
           <a href="#">Inicio</a>
           <a href="#">Categorias</a>
           <a href="#">Nosotros</a>
           <a href="#">Contacto</a>
-          <a href="#">Mi Cuenta</a>
+          <a onclick="userLogin()" id="nombreUsuario" href="#">Mi Cuenta</a>
+          <a href="#" class="trolley"><i class='bx bxs-cart'></i>
+          <span class="trolleyQuantity">0</span></a>
+          
         </nav>
+      </section>
+      <section class="trolleyCard">
+        <h2 class="text-center">Carrito</h2>
+        <ul class="trolleyList">
+          <p class="text-center">¡Tu carrito está vacio!</p>
+        </ul>
+        <article class="trolleyCheckout">
+          <div class="total">Subtotal: 0</div>
+          <div class="closeTrolley">Cerrar</div>
+        </article>
       </section>
       <section class="background">
         <h1 class="text-light">Encuentra tu equipo de vuelo definitivo</h>
@@ -111,5 +120,6 @@
       crossorigin="anonymous"
     ></script>
     <script src="./js/pilotessential.js"></script>
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
   </body>
 </html>
