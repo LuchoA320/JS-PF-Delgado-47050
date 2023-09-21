@@ -88,7 +88,7 @@ function agregar(Producto) {
     listaCarrito += `<li class="trolleyItem"> ${producto.nombre}
      <div> 
      U$D ${producto.precio} - <span class="listPrice"> U$D ${producto.precioList}
-     <button class="btn" onclick="quitar()"><i class='bx bxs-trash'></i></button>
+     <button class="btn" onclick="quitar('${producto.nombre}')"><i class='bx bxs-trash'></i></button>
      </span>
      </div>
      </li>`;
@@ -106,8 +106,12 @@ function agregar(Producto) {
   cantidad.innerHTML = `<span class="trolleyQuantity">${trolleyLenght}</span></a>`;
 }
 
-function quitar(index) {
-  carrito.splice(index, 1)[0];
+function quitar(nombreProducto) {
+  const productoEncontrado = carrito.find((item) => item.nombre == nombreProducto)
+  if (productoEncontrado) {
+    const indice = carrito.indexOf(productoEncontrado);
+    carrito.splice(indice, 1);
+  }
   console.clear();
   console.log(carrito);
   // Vacia la lista del carrito
@@ -117,7 +121,7 @@ function quitar(index) {
     borrarCarrito += `<li class="trolleyItem"> ${producto.nombre}
        <div> 
        U$D ${producto.precio} - <span class="listPrice"> U$D ${producto.precioList}
-       <button class="btn" onclick="quitar()"><i class='bx bxs-trash'></i></button>
+       <button class="btn" onclick="quitar('${producto.nombre}')"><i class='bx bxs-trash'></i></button>
        </span>
        </div>
        </li>`;
