@@ -1,3 +1,10 @@
+// Constantes de Bootstrap para pop-overs
+const popoverTriggerList = document.querySelectorAll(
+  '[data-bs-toggle="popover"]'
+);
+const popoverList = [...popoverTriggerList].map(
+  (popoverTriggerEl) => new bootstrap.Popover(popoverTriggerEl)
+);
 // Variables Globales
 let abrirCarrito = document.querySelector(".trolley");
 let cerrarCarrito = document.querySelector(".closeTrolley");
@@ -78,12 +85,17 @@ function agregar(Producto) {
     buttons: ["Seguir Comprando", "Ver Carrito"],
   });
 
+  // Vacia la lista del carrito
+  let listaCarrito = "";
+  // Por cada producto agregado al array Carrito, agrega un List Item con las propiedades del mismo a la lista del carrito
   carrito.forEach((producto) => {
-    list.innerHTML = `<li>
-    ${producto.nombre}
-    U$D${producto.precio}
-    </li>`;
+    listaCarrito += `<li class="trolleyItem"> ${producto.nombre}
+     <div> 
+     U$D ${producto.precio} - <span class="listPrice"> U$D ${producto.precioList}</span>
+     </div></li>`;
   });
+  // adjudico la variable de la lista al modificador de HTML
+  list.innerHTML = listaCarrito;
 
   // Que limpie y actualice la consola cada vez que se agrega un producto al carrito.
   console.clear();
@@ -99,7 +111,7 @@ function agregar(Producto) {
   });
   const trolleyCheckout = carrito.reduce((acu, el) => acu + el.precio, 0);
   const checkoutList = carrito.reduce((acu, el) => acu + el.precioList, 0);
-  total.innerHTML = `<div >Subtotal: U$D${trolleyCheckout}</div>`;
+  total.innerHTML = `<div >Subtotal: U$D ${trolleyCheckout}</div>`;
   console.log("------------------------------");
   console.log(
     "Subtotal del carrito: U$D",
