@@ -1,4 +1,4 @@
-// Constantes de Bootstrap para pop-overs
+// Constantes globales de Bootstrap para pop-overs
 const popoverTriggerList = document.querySelectorAll(
   '[data-bs-toggle="popover"]'
 );
@@ -15,7 +15,6 @@ let cantidad = document.querySelector(".trolleyQuantity");
 
 // Array vacio del carrito
 const carrito = [];
-let checkout = 0;
 
 // Molde constructor de productos
 class Product {
@@ -65,9 +64,6 @@ const h10 = new Product(
   1
 );
 
-// carrito.push(h10);
-// carrito.push(a20);
-
 // Evento para abrir la pestaña del carrito
 abrirCarrito.addEventListener("click", () => {
   body.classList.add("active");
@@ -91,36 +87,53 @@ function agregar(Producto) {
   carrito.forEach((producto) => {
     listaCarrito += `<li class="trolleyItem"> ${producto.nombre}
      <div> 
-     U$D ${producto.precio} - <span class="listPrice"> U$D ${producto.precioList}</span>
-     </div></li>`;
+     U$D ${producto.precio} - <span class="listPrice"> U$D ${producto.precioList}
+     <button class="btn" onclick="quitar()"><i class='bx bxs-trash'></i></button>
+     </span>
+     </div>
+     </li>`;
   });
   // adjudico la variable de la lista al modificador de HTML
   list.innerHTML = listaCarrito;
-
-  // Que limpie y actualice la consola cada vez que se agrega un producto al carrito.
   console.clear();
-  console.log("Tu carrito:");
-
-  carrito.forEach((producto) => {
-    console.log("------------------------------");
-    console.log("Nombre:", producto.nombre);
-    console.log("Precio:  U$D", producto.precio);
-    console.log("Precio de Lista: U$D", producto.precioList);
-    console.log("Categoria:", producto.categoria);
-    console.log("Cantidad:", producto.cantidad);
-  });
+  console.log(carrito);
+  // Reduce para sumar el precio de los productos en Carrito
   const trolleyCheckout = carrito.reduce((acu, el) => acu + el.precio, 0);
   const checkoutList = carrito.reduce((acu, el) => acu + el.precioList, 0);
+  // Modifico el html de la clase total para mostrar el resultado de la suma almacenado en la variable
   total.innerHTML = `<div >Subtotal: U$D ${trolleyCheckout}</div>`;
-  console.log("------------------------------");
-  console.log(
-    "Subtotal del carrito: U$D",
-    trolleyCheckout,
-    " - Subtotal Lista: U$D",
-    checkoutList
-  );
+  let trolleyLenght = carrito.length;
+  cantidad.innerHTML = `<span class="trolleyQuantity">${trolleyLenght}</span></a>`;
 }
 
+function quitar(index) {
+  carrito.splice(index, 1)[0];
+  console.clear();
+  console.log(carrito);
+  // Vacia la lista del carrito
+  let borrarCarrito = "";
+  // Por cada producto agregado al array Carrito, agrega un List Item con las propiedades del mismo a la lista del carrito
+  carrito.forEach((producto) => {
+    borrarCarrito += `<li class="trolleyItem"> ${producto.nombre}
+       <div> 
+       U$D ${producto.precio} - <span class="listPrice"> U$D ${producto.precioList}
+       <button class="btn" onclick="quitar()"><i class='bx bxs-trash'></i></button>
+       </span>
+       </div>
+       </li>`;
+  });
+  // adjudico la variable para borrar la lista al modificador de HTML
+  list.innerHTML = borrarCarrito;
+  // Reduce para restar el precio del produco que elimino Carrito
+  const trolleyRemoveCheckout = carrito.reduce((acu, el) => acu - el.precio, 0);
+  const checkoutList = carrito.reduce((acu, el) => acu - el.precioList, 0);
+  // Modifico el html de la clase total para mostrar el resultado tras restar los productos del carrito
+  total.innerHTML = `<div >Subtotal: U$D ${trolleyRemoveCheckout}</div>`;
+  let trolleyLenght = carrito.length;
+  cantidad.innerHTML = `<span class="trolleyQuantity">${trolleyLenght}</span></a>`;
+}
+
+// Funcion para iniciar sesion
 function userLogin() {
   let userLogin;
   let nombreUsuario;
@@ -133,15 +146,20 @@ function userLogin() {
       "¿Que desea hacer? \n Iniciar Sesion \n Registrarse \n Salir"
     );
     switch (userLogin) {
+      // Pido por Prompt el nombre del usuario
       case "Iniciar Sesion":
         nombreUsuario = prompt("Ingrese su nombre de usuario");
+        // Pido que ingrese su contraseña de usuario (puede ser cualquier cosa)
         prompt("Ingrese su contraseña");
+        // Bienvenida con nombre de usuario
         alert(`Bienvenido de nuevo ${nombreUsuario}.`);
         break;
       case "Registrarse":
+        // Pido al usuario que cree su cuenta con Correo, Contraseña y Usuario
         const correoUsuario = prompt("Ingrese su correo electronico");
         nombreUsuario = prompt("Ingrese su nombre de usuario");
         prompt("Ingrese su contraseña");
+        // Bienvenida con nombre de usuario y correo electronico
         alert(
           `Te damos la bienvenida a Pilot Essential ${nombreUsuario}, se ha enviado un correo de verificacion de identidad a ${correoUsuario}. Recuerda que debes verificar tu correo antes de poder realizar compras.`
         );
@@ -154,6 +172,12 @@ function userLogin() {
         );
     }
   }
+
+  // Remplazo el boton de Mi cuenta por el nombre de usuario almacenado en la variable
   const usuario = document.querySelector("#nombreUsuario");
   usuario.innerHTML = `<a href="#">${nombreUsuario}</a>`;
+}
+
+function continuarCompra() {
+  window.location = "https://www.youtube.com/watch?v=dQw4w9WgXcQ";
 }

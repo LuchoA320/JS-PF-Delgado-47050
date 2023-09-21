@@ -37,17 +37,19 @@
           <span class="trolleyQuantity">0</span></a>
         </nav>
       </section>
-      <section class="trolleyCard">
+      <!-- ====== Cart Section (Disabled until Active class is called) ====== -->
+      <aside class="trolleyCard">
         <h2 class="text-center">Carrito</h2>
         <ul class="trolleyList">
           <p class="text-center">¡Tu carrito está vacio!</p>
         </ul>
         <div class="total p-1">Subotal:</div>
         <article class="trolleyCheckout">
-          <div class="btn">Continuar</div>
+          <div class="btn" onclick="continuarCompra()">Continuar</div>
+          <a href=""></a>
           <div class="closeTrolley btn">Cerrar</div>
         </article>
-      </section>
+      </aside>
       <section class="background">
         <h1 class="text-light">Encuentra tu equipo de vuelo definitivo</h>
         <div class="box">
@@ -56,27 +58,42 @@
       </section>
     </header>
     
-    
     <main>
       <h2 class="text-center mt-3">Accesorios destacados</h2>
       <section id="featuredProducts">
         <!-- ====== Product cards ====== -->
         <article class="productCard">
+          <!-- Card Image -->
           <img src="./assets/images/Headsets/BoseA20-1.jpg" alt="Bose A20 bt">
+          <!-- Card Title -->
           <h3 class="text-center">Auriculares Bose A20 Bluetooth</h3>
+          <!-- Card Prices -->
           <div class="cardPrice">
             <p>U$D 1,099.00</p>
-            <p class="listPrice"> U$D 1,195.00</p>
+            <p class="listPrice"> U$D 1,195.00
+              <!-- Popover with information about list price -->
+              <span tabindex="0" data-bs-toggle="popover" data-bs-trigger="hover focus" data-bs-content="Precio de lista, abonando con tarjetas de credito en 3, 6 o 12 cuotas sin interes.">
+                <i class='bx bx-question-mark'></i>
+              </span>
+            </p>
           </div>
+          <!-- Add to cart function -->
           <button onclick="agregar(a20)" class="btn">Agregar al Carrito</button>
 
         </article>
+
+        <!-- SAME SYNTAX FOR EVERY PRODUCT -->
+
         <article class="productCard">
           <img src="./assets/images/Headsets/BoseA30-1.jpg" alt="Bose A30 bt">
           <h3 class="text-center">Auriculares Bose A30 Bluetooth</h3>
           <div class="cardPrice">
             <p>U$D 1,299.00</p>
-            <p class="listPrice"> U$D 1,495.00</p>
+            <p class="listPrice"> U$D 1,495.00
+              <span tabindex="0" data-bs-toggle="popover" data-bs-trigger="hover focus" data-bs-content="Precio de lista, abonando con tarjetas de credito en 3, 6 o 12 cuotas sin interes.">
+                <i class='bx bx-question-mark'></i>
+              </span>
+            </p>
           </div>
           <button onclick="agregar(a30)" class="btn">Agregar al Carrito</button>
 
@@ -86,7 +103,11 @@
           <h3 class="text-center">Reloj Garmin D2 Mach 1 Aviator</h3>
           <div class="cardPrice">
             <p>U$D 1,199.00</p>
-            <p class="listPrice"> U$D 1,399.00</p>
+            <p class="listPrice"> U$D 1,399.00
+              <span tabindex="0" data-bs-toggle="popover" data-bs-trigger="hover focus" data-bs-content="Precio de lista, abonando con tarjetas de credito en 3, 6 o 12 cuotas sin interes.">
+                <i class='bx bx-question-mark'></i>
+              </span>
+            </p>
           </div>
           <button onclick="agregar(d2Mach1)" class="btn">Agregar al Carrito</button>
 
@@ -96,7 +117,11 @@
           <h3 class="text-center">Computadora de vuelo ASA CX-3 Pathfinder</h3>
           <div class="cardPrice">
             <p>U$D 117.50</p>
-            <p class="listPrice"> U$D 124.95</p>
+            <p class="listPrice"> U$D 124.95
+              <span tabindex="0" data-bs-toggle="popover" data-bs-trigger="hover focus" data-bs-content="Precio de lista, abonando con tarjetas de credito en 3, 6 o 12 cuotas sin interes.">
+                <i class='bx bx-question-mark'></i>
+              </span>
+            </p>
           </div>
           <button onclick="agregar(asaCX3)" class="btn">Agregar al Carrito</button>
 
@@ -106,7 +131,11 @@
           <h3 class="text-center">Auriculares David Clark H10-13.4</h3>
           <div class="cardPrice">
             <p>U$D 356.95</p>
-            <p class="listPrice"> U$D 391.65</p>
+            <p class="listPrice"> U$D 391.65
+              <span tabindex="0" data-bs-toggle="popover" data-bs-trigger="hover focus" data-bs-content="Precio de lista, abonando con tarjetas de credito en 3, 6 o 12 cuotas sin interes.">
+                <i class='bx bx-question-mark'></i>
+              </span>
+            </p>
           </div>
           <button onclick="agregar(h10)" class="btn">Agregar al Carrito</button>
 

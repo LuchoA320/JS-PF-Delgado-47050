@@ -5,6 +5,17 @@
   box-sizing: border-box;
   font-family: "Poppins", sans-serif;
 }
+
+::-webkit-scrollbar {
+  width: 0.5rem;
+}
+::-webkit-scrollbar-track {
+  background: #eeeeee;
+}
+::-webkit-scrollbar-thumb {
+  background: #727272;
+  border-radius: 50px;
+}
 header {
   height: 80vh;
   background-image: url(../assets/images/background-ga.jpg);
@@ -107,7 +118,7 @@ footer {
   z-index: 1;
 }
 .cardPrice {
-  padding: 10px;
+  padding: 5px;
   display: flex;
   justify-content: space-around;
 }
@@ -115,7 +126,12 @@ footer {
   text-decoration: line-through;
   color: #727272;
 }
-
+.bx-question-mark {
+  margin: 1px;
+  background-color: #727272;
+  color: #ffff;
+  border-radius: 30px;
+}
 .bxs-cart {
   font-size: 1.7rem;
   font-weight: bold;
@@ -123,6 +139,7 @@ footer {
 }
 
 .trolleyCard {
+  overflow: auto;
   position: fixed;
   top: 0;
   left: 100%;
@@ -145,10 +162,9 @@ footer {
   align-items: center;
   box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1);
 }
-
 .trolleyCard .trolleyCheckout {
-  position: absolute;
-  bottom: 0;
+  position: sticky;
+  top: 100%;
   width: 100%;
   display: flex;
 }
@@ -162,6 +178,7 @@ footer {
   align-items: center;
   font-weight: bold;
   cursor: pointer;
+  color: #fff;
 }
 
 .trolleyCard .trolleyCheckout div:nth-child(1) {
