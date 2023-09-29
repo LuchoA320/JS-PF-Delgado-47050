@@ -6,12 +6,12 @@ const popoverList = [...popoverTriggerList].map(
   (popoverTriggerEl) => new bootstrap.Popover(popoverTriggerEl)
 );
 // Variables Globales
-let abrirCarrito = document.querySelector(".trolley");
-let cerrarCarrito = document.querySelector(".closeTrolley");
-let list = document.querySelector(".trolleyList");
-let body = document.querySelector("body");
+let abrirCarrito = document.querySelector(".Cart");
+let cerrarCarrito = document.querySelector(".closeCart");
+let list = document.querySelector(".cartList");
+let listaCarrito = document.querySelector(".cartCard");
 let total = document.querySelector(".total");
-let cantidad = document.querySelector(".trolleyQuantity");
+let cantidad = document.querySelector(".cartQuantity");
 
 // Array vacio del carrito
 const carrito = [];
@@ -66,11 +66,11 @@ const h10 = new Product(
 
 // Evento para abrir la pestaña del carrito
 abrirCarrito.addEventListener("click", () => {
-  body.classList.add("active");
+  listaCarrito.classList.add("activeCart");
 });
 // Evento para cerrar la pestaña del carrito
 cerrarCarrito.addEventListener("click", () => {
-  body.classList.remove("active");
+  listaCarrito.classList.remove("activeCart");
 });
 
 // Funcion para agregar el producto elegido al carrito.
@@ -85,7 +85,7 @@ function agregar(Producto) {
   let listaCarrito = "";
   // Por cada producto agregado al array Carrito, agrega un List Item con las propiedades del mismo a la lista del carrito
   carrito.forEach((producto) => {
-    listaCarrito += `<li class="trolleyItem"> ${producto.nombre}
+    listaCarrito += `<li class="cartItem"> ${producto.nombre}
      <div> 
      U$D ${producto.precio} - <span class="listPrice"> U$D ${producto.precioList}
      <button class="btn" onclick="quitar('${producto.nombre}')"><i class='bx bxs-trash'></i></button>
@@ -98,16 +98,18 @@ function agregar(Producto) {
   console.clear();
   console.log(carrito);
   // Reduce para sumar el precio de los productos en Carrito
-  const trolleyCheckout = carrito.reduce((acu, el) => acu + el.precio, 0);
+  const cartCheckout = carrito.reduce((acu, el) => acu + el.precio, 0);
   const checkoutList = carrito.reduce((acu, el) => acu + el.precioList, 0);
   // Modifico el html de la clase total para mostrar el resultado de la suma almacenado en la variable
-  total.innerHTML = `<div >Subtotal: U$D ${trolleyCheckout}</div>`;
+  total.innerHTML = `<div >Subtotal: U$D ${cartCheckout}</div>`;
   let trolleyLenght = carrito.length;
-  cantidad.innerHTML = `<span class="trolleyQuantity">${trolleyLenght}</span></a>`;
+  cantidad.innerHTML = `<span class="cartQuantity">${trolleyLenght}</span></a>`;
 }
 
 function quitar(nombreProducto) {
-  const productoEncontrado = carrito.find((item) => item.nombre == nombreProducto)
+  const productoEncontrado = carrito.find(
+    (item) => item.nombre == nombreProducto
+  );
   if (productoEncontrado) {
     const indice = carrito.indexOf(productoEncontrado);
     carrito.splice(indice, 1);
@@ -118,7 +120,7 @@ function quitar(nombreProducto) {
   let borrarCarrito = "";
   // Por cada producto agregado al array Carrito, agrega un List Item con las propiedades del mismo a la lista del carrito
   carrito.forEach((producto) => {
-    borrarCarrito += `<li class="trolleyItem"> ${producto.nombre}
+    borrarCarrito += `<li class="cartItem"> ${producto.nombre}
        <div> 
        U$D ${producto.precio} - <span class="listPrice"> U$D ${producto.precioList}
        <button class="btn" onclick="quitar('${producto.nombre}')"><i class='bx bxs-trash'></i></button>
@@ -129,12 +131,12 @@ function quitar(nombreProducto) {
   // adjudico la variable para borrar la lista al modificador de HTML
   list.innerHTML = borrarCarrito;
   // Reduce para restar el precio del produco que elimino Carrito
-  const trolleyRemoveCheckout = carrito.reduce((acu, el) => acu - el.precio, 0);
+  const cartRemoveCheckout = carrito.reduce((acu, el) => acu - el.precio, 0);
   const checkoutList = carrito.reduce((acu, el) => acu - el.precioList, 0);
   // Modifico el html de la clase total para mostrar el resultado tras restar los productos del carrito
-  total.innerHTML = `<div >Subtotal: U$D ${trolleyRemoveCheckout}</div>`;
-  let trolleyLenght = carrito.length;
-  cantidad.innerHTML = `<span class="trolleyQuantity">${trolleyLenght}</span></a>`;
+  total.innerHTML = `<div >Subtotal: U$D ${cartRemoveCheckout}</div>`;
+  let cartLenght = carrito.length;
+  cantidad.innerHTML = `<span class="cartQuantity">${cartLenght}</span></a>`;
 }
 
 // Funcion para iniciar sesion

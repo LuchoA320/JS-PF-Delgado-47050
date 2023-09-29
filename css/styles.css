@@ -138,7 +138,7 @@ footer {
   color: #ffff;
 }
 
-.trolleyCard {
+.cartCard {
   overflow: auto;
   position: fixed;
   top: 0;
@@ -151,10 +151,10 @@ footer {
   box-shadow: 0 10px 15px rgba(0, 0, 0, 0.3);
 }
 
-.trolleyList {
+.cartList {
   padding: 0;
 }
-.trolleyCard h2 {
+.cartCard h2 {
   background-color: #ffff;
   padding: 0 20px;
   height: 80px;
@@ -162,14 +162,14 @@ footer {
   align-items: center;
   box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1);
 }
-.trolleyCard .trolleyCheckout {
+.cartCard .cartCheckout {
   position: sticky;
   top: 100%;
   width: 100%;
   display: flex;
 }
 
-.trolleyCard .trolleyCheckout div {
+.cartCard .cartCheckout div {
   background-color: #727272;
   width: 100%;
   height: 50px;
@@ -181,16 +181,16 @@ footer {
   color: #fff;
 }
 
-.trolleyCard .trolleyCheckout div:nth-child(1) {
+.cartCard .cartCheckout div:nth-child(1) {
   background-color: #38b6ff;
   color: #fff;
 }
 
-.active .trolleyCard {
+.activeCart {
   left: calc(100% - 350px);
 }
 
-.trolleyItem {
+.cartItem {
   border-bottom: 1px solid #b5b5b5;
   padding: 20px;
   box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1);
