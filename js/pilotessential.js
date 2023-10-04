@@ -14,9 +14,12 @@ let totalCarrito = document.querySelector(".total");
 let cantidad = document.querySelector(".cartQuantity");
 let sectionFeatured = document.querySelector("#featuredProducts");
 
-// Array vacio del carrito
+// Traigo el carrito del storage
 const carritoStorage = JSON.parse(localStorage.getItem("carrito"));
-const carrito = [];
+// Si existe un carrito en el storage, lo traigo, si no, pongo un array vacio
+const carrito = carritoStorage || [];
+// Llamo a listar el carrito del storage
+listarCarrito();
 
 // Molde constructor de productos
 class Product {
@@ -181,8 +184,10 @@ function agregar(producto) {
   swal(producto.nombre + " fue agregado al carrito.", {
     buttons: ["Seguir Comprando", "Ver Carrito"],
   });
-  listarCarrito();
+  // Guardo el storage
   localStorage.setItem("carrito", JSON.stringify(carrito));
+  // Llamo a listar el carrito
+  listarCarrito();
 }
 
 // Funcion para quitar productos del carrito segun su ID
@@ -196,8 +201,10 @@ function quitar(id) {
     // Si no, lo borro directamente con splice
     carrito.splice(indiceProducto, 1);
   }
-  listarCarrito();
+  // Guardo el storage
   localStorage.setItem("carrito", JSON.stringify(carrito));
+  // Llamo a listar el carrito
+  listarCarrito();
 }
 
 function listarCarrito() {
@@ -224,7 +231,10 @@ function listarCarrito() {
   console.clear();
   console.log(carrito);
   // Reduce para sumar el precio de los productos en Carrito
-  const cartCheckout = carrito.reduce((acu, el) => acu + el.precio, 0);
+  const cartCheckout = carrito.reduce(
+    (acu, el) => acu + el.precio * el.unidades,
+    0
+  );
   // Modifico el html de la clase total para mostrar el resultado de la suma almacenado en la variable
   totalCarrito.innerHTML = `<div >Subtotal: U$D ${cartCheckout}</div>`;
   let cartLenght = carrito.length;
