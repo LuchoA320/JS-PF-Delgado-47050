@@ -16,9 +16,17 @@
   background: #727272;
   border-radius: 50px;
 }
-header {
+#headerIndex {
   height: 80vh;
   background-image: url(../assets/images/background-ga.jpg);
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  background-attachment: fixed;
+}
+#accountBodyBG {
+  height: 100vh;
+  background-image: url(../assets/images/hangar.jpg);
   background-repeat: no-repeat;
   background-position: center;
   background-size: cover;
@@ -45,7 +53,7 @@ header {
 ul {
   list-style-type: none;
 }
-main {
+#mainIndex {
   height: 100vh;
   background-color: #eeeeee;
 }
@@ -217,4 +225,88 @@ footer {
 
 .cartItem div {
   padding: 10px;
+}
+
+.loginBox {
+  max-width: 300px;
+  background: #f1f7fe;
+  overflow: hidden;
+  border-radius: 5px;
+  color: #010101;
+  top: 120px;
+  position: absolute;
+}
+
+.login {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  padding: 32px 24px 24px;
+  gap: 16px;
+  text-align: center;
+}
+
+.loginTitle {
+  font-weight: bold;
+  font-size: 1.6rem;
+}
+
+.loginSubtitle {
+  font-size: 1rem;
+  color: #666;
+}
+
+/*Inputs box*/
+.loginContainer {
+  overflow: hidden;
+  border-radius: 8px;
+  background-color: #fff;
+  margin: 1rem 0 0.5rem;
+  width: 100%;
+}
+
+.loginInput {
+  background: none;
+  border: 0;
+  outline: 0;
+  height: 40px;
+  width: 100%;
+  border-bottom: 1px solid #eee;
+  font-size: 0.9rem;
+  padding: 8px 15px;
+}
+
+.loginFooter {
+  padding: 16px;
+  font-size: 0.85rem;
+  background-color: #e0ecfb;
+  box-shadow: rgb(0 0 0 / 8%) 0 -1px;
+}
+
+.loginFooter a {
+  font-weight: bold;
+  color: #38b6ff;
+  transition: color 0.3s ease;
+}
+
+.loginFooter a:hover {
+  color: #2d97d4;
+  text-decoration: underline;
+}
+
+/*Button*/
+.login button {
+  background-color: #38b6ff;
+  color: #fff;
+  border: 0;
+  border-radius: 24px;
+  padding: 10px 16px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.login button:hover {
+  background-color: #2d97d4;
 }

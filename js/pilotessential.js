@@ -295,7 +295,7 @@ function userLogin() {
   const usuario = document.querySelector("#nombreUsuario");
   usuario.innerHTML = `<a href="#">${nombreUsuario}</a>`;
 }
-
-function continuarCompra() {
+const botonComprar = document.querySelector(".btnComprar");
+botonComprar.addEventListener("click", () => {
   window.location = "https://www.youtube.com/watch?v=dQw4w9WgXcQ";
-}
+});
