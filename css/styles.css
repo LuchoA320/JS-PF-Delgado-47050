@@ -192,10 +192,29 @@ footer {
 
 .cartItem {
   border-bottom: 1px solid #b5b5b5;
-  padding: 20px;
+  padding: 10px 0;
   box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1);
   background-color: #ffff;
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   justify-content: center;
+}
+.cartItem img {
+  height: 100px;
+  width: 100px;
+}
+.cartItem h3 {
+  font-size: 1rem;
+  font-weight: bold;
+}
+.cartItem p {
+  color: #727272;
+  margin-bottom: 0;
+}
+.cartItem .btn {
+  padding: 0px;
+}
+
+.cartItem div {
+  padding: 10px;
 }

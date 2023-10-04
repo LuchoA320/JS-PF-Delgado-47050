@@ -10,59 +10,147 @@ let abrirCarrito = document.querySelector(".Cart");
 let cerrarCarrito = document.querySelector(".closeCart");
 let list = document.querySelector(".cartList");
 let listaCarrito = document.querySelector(".cartCard");
-let total = document.querySelector(".total");
+let totalCarrito = document.querySelector(".total");
 let cantidad = document.querySelector(".cartQuantity");
+let sectionFeatured = document.querySelector("#featuredProducts");
 
 // Array vacio del carrito
+const carritoStorage = JSON.parse(localStorage.getItem("carrito"));
 const carrito = [];
 
 // Molde constructor de productos
 class Product {
-  constructor(nombre, precio, precioList, categoria, cantidad) {
+  constructor(id, nombre, precio, precioList, categoria, imagen) {
+    this.id = id;
     this.nombre = nombre;
     this.precio = precio;
     this.precioList = precioList;
     this.categoria = categoria;
-    this.cantidad = cantidad;
+    this.imagen = imagen;
   }
 }
+// Clase de la base de datos del catalogo
+class DataBase {
+  constructor() {
+    // Array vacio del catalogo
+    this.catalogo = [];
+    // ===== INSTANCIACION DE PRODUCTOS =====
+    this.instanciarProducto(
+      1,
+      "Auriculares Bose A20 Bluetooth",
+      1099.0,
+      1195.0,
+      "Headsets",
+      "BoseA20-1.jpg"
+    );
+    this.instanciarProducto(
+      2,
+      "Auriculares Bose A30 Bluetooth",
+      1299.65,
+      1495.65,
+      "Headsets",
+      "BoseA30-1.jpg"
+    );
+    this.instanciarProducto(
+      3,
+      "Reloj Garmin D2 Mach 1 Aviator",
+      1199.0,
+      1399.0,
+      "Watches",
+      "garminD2-1.jpg"
+    );
+    this.instanciarProducto(
+      4,
+      "Computadora de vuelo ASA CX-3 Pathfinder",
+      117.45,
+      124.95,
+      "Flight Computers",
+      "ASA-CX3-1.jpg"
+    );
+    this.instanciarProducto(
+      5,
+      "Auriculares David Clark H10-13.4",
+      356.95,
+      391.65,
+      "Headsets",
+      "davidclarkH10-1.jpg"
+    );
+  }
+  // Metodo para instanciar productos dinamicamente y agregarlos al catalogo
+  instanciarProducto(id, nombre, precio, precioList, categoria, imagen) {
+    const producto = new Product(
+      id,
+      nombre,
+      precio,
+      precioList,
+      categoria,
+      imagen
+    );
+    // Push automatico del producto al catalogo
+    this.catalogo.push(producto);
+  }
+  // Metodo para listar el catalogo citando a la base de datos
+  listarProductos() {
+    return this.catalogo;
+  }
+  productoPorId(id) {
+    return this.catalogo.find((producto) => producto.id === id);
+  }
+  productoPorNombre(palabra) {
+    return this.catalogo.filter((producto) =>
+      producto.nombre.toLowerCase().includes(palabra.toLowerCase())
+    );
+  }
+}
+// Instanciamos la base de datos
+const dB = new DataBase();
 
-// ===== INSTANCIACION DE PRODUCTOS =====
-const a20 = new Product(
-  "Auriculares Bose A20 Bluetooth",
-  1099.0,
-  1195.0,
-  "Headsets",
-  1
-);
-const a30 = new Product(
-  "Auriculares Bose A30 Bluetooth",
-  1299.65,
-  1495.65,
-  "Headsets",
-  1
-);
-const d2Mach1 = new Product(
-  "Reloj Garmin D2 Mach 1 Aviator",
-  1199.0,
-  1399.0,
-  "Watches",
-  1
-);
-const asaCX3 = new Product(
-  "Computadora de vuelo ASA CX-3 Pathfinder",
-  117.45,
-  124.95,
-  "Flight Computers",
-  1
-);
-const h10 = new Product(
-  "Auriculares David Clark H10-13.4",
-  356.95,
-  391.65,
-  "Headsets",
-  1
-);
+// Instanciamos la clase Carrito
+// const miCarrito = new Carrito();
+
+// Mostramos el catalogo de la base de datos apenas carga la pagina
+cargarProductos(dB.listarProductos());
+// Funcion para mostrar los productos del catalogo
+function cargarProductos(productos) {
+  sectionFeatured.innerHTML = "";
+
+  for (const producto of productos) {
+    sectionFeatured.innerHTML += `
+    <article class="productCard">
+          <img src="./assets/images/products/${producto.imagen}" alt="${producto.nombre}">
+
+          <h3 class="text-center">${producto.nombre}</h3>
+
+          <div class="cardPrice">
+            <p>U$D ${producto.precio}</p>
+            <p class="listPrice"> U$D ${producto.precioList}
+
+              <span tabindex="0" data-bs-toggle="popover" data-bs-trigger="hover focus" data-bs-content="Precio de lista, abonando con tarjetas de credito en 3, 6 o 12 cuotas sin interes.">
+                <i class='bx bx-question-mark'></i>
+              </span>
+            </p>
+          </div>
+
+          <button data-id="${producto.id}" class="btn btnAgregar">Agregar al Carrito</button>
+
+        </article>
+    `;
+  }
+
+  // selecciono todos los botones de agregar con QS all
+  const botonesAgregar = document.querySelectorAll(".btnAgregar");
+  botonesAgregar.forEach((boton) => {
+    boton.addEventListener("click", () => {
+      // Obtengo el id del objeto segun el boton que toco
+      const idProducto = Number(boton.dataset.id);
+      // Utilizo el metodo de busqueda por id de la DB para localizar el id del producto
+      const producto = dB.productoPorId(idProducto);
+      // Llama al metodo para agregar al carrito
+      agregar(producto);
+      console.log(carrito);
+    });
+  });
+}
 
 // Evento para abrir la pestaña del carrito
 abrirCarrito.addEventListener("click", () => {
@@ -72,71 +160,85 @@ abrirCarrito.addEventListener("click", () => {
 cerrarCarrito.addEventListener("click", () => {
   listaCarrito.classList.remove("activeCart");
 });
-
+// funcion para buscar si un producto existe en el carrito
+function enCarrito({ id }) {
+  return carrito.find((producto) => producto.id === id);
+}
 // Funcion para agregar el producto elegido al carrito.
-function agregar(Producto) {
-  carrito.unshift(Producto);
+function agregar(producto) {
+  // Almaceno la funcion enCarrito en una variable
+  const productoEnCarrito = enCarrito(producto);
+  // Si el producto no se encuentra en el carrito, lo agrega al principio con unshift
+  // y le suma la propiedad unidades
+  if (!productoEnCarrito) {
+    carrito.unshift({ ...producto, unidades: 1 });
+  } else {
+    // Si lo encuentra, le agrega una unidad
+    productoEnCarrito.unidades++;
+  }
+
   // Alert indicando que el producto se agrego satisfactoriamente.
-  swal(Producto.nombre + " fue agregado al carrito.", {
+  swal(producto.nombre + " fue agregado al carrito.", {
     buttons: ["Seguir Comprando", "Ver Carrito"],
   });
+  listarCarrito();
+  localStorage.setItem("carrito", JSON.stringify(carrito));
+}
 
+// Funcion para quitar productos del carrito segun su ID
+function quitar(id) {
+  // Busco el indice del producto con findIndex
+  const indiceProducto = carrito.findIndex((producto) => producto.id === id);
+  // Si la cantidad de este producto es mayor a 1 le resto una unidad
+  if (carrito[indiceProducto].unidades > 1) {
+    carrito[indiceProducto].unidades--;
+  } else {
+    // Si no, lo borro directamente con splice
+    carrito.splice(indiceProducto, 1);
+  }
+  listarCarrito();
+  localStorage.setItem("carrito", JSON.stringify(carrito));
+}
+
+function listarCarrito() {
   // Vacia la lista del carrito
   let listaCarrito = "";
   // Por cada producto agregado al array Carrito, agrega un List Item con las propiedades del mismo a la lista del carrito
   carrito.forEach((producto) => {
-    listaCarrito += `<li class="cartItem"> ${producto.nombre}
-     <div> 
+    listaCarrito += `<li class="cartItem"> <img src="./assets/images/products/${producto.imagen}"/>
+    <div>
+    <h3>${producto.nombre}</h3>
+
+      <p>${producto.unidades} u.</p>
      U$D ${producto.precio} - <span class="listPrice"> U$D ${producto.precioList}
-     <button class="btn" onclick="quitar('${producto.nombre}')"><i class='bx bxs-trash'></i></button>
+     <button class="btn btnQuitar" data-id="${producto.id}"" >
+     <i class='bx bxs-trash'></i>
+     </button>
      </span>
      </div>
      </li>`;
   });
+
   // adjudico la variable de la lista al modificador de HTML
   list.innerHTML = listaCarrito;
   console.clear();
   console.log(carrito);
   // Reduce para sumar el precio de los productos en Carrito
   const cartCheckout = carrito.reduce((acu, el) => acu + el.precio, 0);
-  const checkoutList = carrito.reduce((acu, el) => acu + el.precioList, 0);
   // Modifico el html de la clase total para mostrar el resultado de la suma almacenado en la variable
-  total.innerHTML = `<div >Subtotal: U$D ${cartCheckout}</div>`;
-  let trolleyLenght = carrito.length;
-  cantidad.innerHTML = `<span class="cartQuantity">${trolleyLenght}</span></a>`;
-}
-
-function quitar(nombreProducto) {
-  const productoEncontrado = carrito.find(
-    (item) => item.nombre == nombreProducto
-  );
-  if (productoEncontrado) {
-    const indice = carrito.indexOf(productoEncontrado);
-    carrito.splice(indice, 1);
-  }
-  console.clear();
-  console.log(carrito);
-  // Vacia la lista del carrito
-  let borrarCarrito = "";
-  // Por cada producto agregado al array Carrito, agrega un List Item con las propiedades del mismo a la lista del carrito
-  carrito.forEach((producto) => {
-    borrarCarrito += `<li class="cartItem"> ${producto.nombre}
-       <div> 
-       U$D ${producto.precio} - <span class="listPrice"> U$D ${producto.precioList}
-       <button class="btn" onclick="quitar('${producto.nombre}')"><i class='bx bxs-trash'></i></button>
-       </span>
-       </div>
-       </li>`;
-  });
-  // adjudico la variable para borrar la lista al modificador de HTML
-  list.innerHTML = borrarCarrito;
-  // Reduce para restar el precio del produco que elimino Carrito
-  const cartRemoveCheckout = carrito.reduce((acu, el) => acu - el.precio, 0);
-  const checkoutList = carrito.reduce((acu, el) => acu - el.precioList, 0);
-  // Modifico el html de la clase total para mostrar el resultado tras restar los productos del carrito
-  total.innerHTML = `<div >Subtotal: U$D ${cartRemoveCheckout}</div>`;
+  totalCarrito.innerHTML = `<div >Subtotal: U$D ${cartCheckout}</div>`;
   let cartLenght = carrito.length;
   cantidad.innerHTML = `<span class="cartQuantity">${cartLenght}</span></a>`;
+  // Selecciono todos los botones de quitar con QS all
+  const botonQuitar = document.querySelectorAll(".btnQuitar");
+  botonQuitar.forEach((boton) => {
+    boton.addEventListener("click", () => {
+      // busco el id del producto y lo almaceno en la variable
+      const idProducto = Number(boton.dataset.id);
+      // quito el producto segun su ID
+      quitar(idProducto);
+    });
+  });
 }
 
 // Funcion para iniciar sesion
