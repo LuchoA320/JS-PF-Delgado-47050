@@ -108,9 +108,6 @@ class DataBase {
 // Instanciamos la base de datos
 const dB = new DataBase();
 
-// Instanciamos la clase Carrito
-// const miCarrito = new Carrito();
-
 // Mostramos el catalogo de la base de datos apenas carga la pagina
 cargarProductos(dB.listarProductos());
 // Funcion para mostrar los productos del catalogo
