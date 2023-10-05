@@ -115,10 +115,11 @@ const dB = new DataBase();
 cargarProductos(dB.listarProductos());
 // Funcion para mostrar los productos del catalogo
 function cargarProductos(productos) {
-  sectionFeatured.innerHTML = "";
+  if (sectionFeatured !== null) {
+    sectionFeatured.innerHTML = "";
 
-  for (const producto of productos) {
-    sectionFeatured.innerHTML += `
+    for (const producto of productos) {
+      sectionFeatured.innerHTML += `
     <article class="productCard">
           <img src="./assets/images/products/${producto.imagen}" alt="${producto.nombre}">
 
@@ -138,6 +139,7 @@ function cargarProductos(productos) {
 
         </article>
     `;
+    }
   }
 
   // selecciono todos los botones de agregar con QS all
@@ -251,51 +253,52 @@ function listarCarrito() {
   });
 }
 
-// Funcion para iniciar sesion
-function userLogin() {
-  let userLogin;
-  let nombreUsuario;
-  while (
-    userLogin != "Iniciar Sesion" &&
-    userLogin != "Registrarse" &&
-    userLogin != "Salir"
-  ) {
-    userLogin = prompt(
-      "¿Que desea hacer? \n Iniciar Sesion \n Registrarse \n Salir"
-    );
-    switch (userLogin) {
-      // Pido por Prompt el nombre del usuario
-      case "Iniciar Sesion":
-        nombreUsuario = prompt("Ingrese su nombre de usuario");
-        // Pido que ingrese su contraseña de usuario (puede ser cualquier cosa)
-        prompt("Ingrese su contraseña");
-        // Bienvenida con nombre de usuario
-        alert(`Bienvenido de nuevo ${nombreUsuario}.`);
-        break;
-      case "Registrarse":
-        // Pido al usuario que cree su cuenta con Correo, Contraseña y Usuario
-        const correoUsuario = prompt("Ingrese su correo electronico");
-        nombreUsuario = prompt("Ingrese su nombre de usuario");
-        prompt("Ingrese su contraseña");
-        // Bienvenida con nombre de usuario y correo electronico
-        alert(
-          `Te damos la bienvenida a Pilot Essential ${nombreUsuario}, se ha enviado un correo de verificacion de identidad a ${correoUsuario}. Recuerda que debes verificar tu correo antes de poder realizar compras.`
-        );
-        break;
-      case "Salir":
-        break;
-      default:
-        alert(
-          "No se reconoce el comando ingresado, por favor intentelo nuevamente."
-        );
-    }
-  }
-
-  // Remplazo el boton de Mi cuenta por el nombre de usuario almacenado en la variable
-  const usuario = document.querySelector("#nombreUsuario");
-  usuario.innerHTML = `<a href="#">${nombreUsuario}</a>`;
-}
 const botonComprar = document.querySelector(".btnComprar");
 botonComprar.addEventListener("click", () => {
   window.location = "https://www.youtube.com/watch?v=dQw4w9WgXcQ";
+});
+
+const btnRegistrar = document.querySelector("#btnRegister");
+const loginBox = document.querySelector(".loginBox");
+
+// Prevengo la accion default del link para cambiar de formulario
+// y cambio el form completo con el de registro
+btnRegistrar.addEventListener("click", (event) => {
+  event.preventDefault();
+  loginBox.innerHTML = `
+  <div class="loginBox">
+          <form class="login">
+            <span class="loginTitle">Registrarse</span>
+            <span class="loginSubtitle"
+              >Crea tu cuenta con tu correo electronico</span
+            >
+            <div class="loginContainer">
+               <input
+               id="username"
+               type="text"
+               class="loginInput"
+               placeholder="Nombre de Usuario">
+              <input
+                id="email"
+                type="email"
+                class="loginInput"
+                placeholder="Correo Electronico"
+              />
+              <input
+                id="password"
+                type="password"
+                class="loginInput"
+                placeholder="Contraseña"
+              />
+            </div>
+            <button class="btnSubmit">Iniciar Sesion</button>
+          </form>
+          <div class="loginFooter">
+            <p>
+              ¿Ya tienes cuenta? <a id="btnRegister" href="">Inicia Sesion</a>
+            </p>
+          </div>
+        </div>
+      </section>
+  `;
 });

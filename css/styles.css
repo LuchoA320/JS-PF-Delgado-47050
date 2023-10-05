@@ -233,8 +233,7 @@ footer {
   overflow: hidden;
   border-radius: 5px;
   color: #010101;
-  top: 120px;
-  position: absolute;
+  position: relative;
 }
 
 .login {
@@ -299,7 +298,7 @@ footer {
   background-color: #38b6ff;
   color: #fff;
   border: 0;
-  border-radius: 24px;
+  border-radius: 30px;
   padding: 10px 16px;
   font-size: 1rem;
   font-weight: 600;
