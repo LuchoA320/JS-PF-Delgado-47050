@@ -25,7 +25,7 @@
   },
   {
     "id": 4,
-    "nombre": "Computadora de vuelo ASA CX-3 Pathfinder",
+    "nombre": "Computadora de vuelo electronica ASA CX-3 Pathfinder",
     "precio": 117.45,
     "precioList": 124.95,
     "categoria": "Computadoras de Vuelo",
@@ -145,11 +145,11 @@
   },
   {
     "id": 19,
-    "nombre": "Reloj Abingdon Elise Zulu",
-    "precio": 494.0,
-    "precioList": 549.0,
-    "categoria": "Relojes",
-    "imagen": "abingdon-elise.jpg"
+    "nombre": "Auriculares Rugged Air RA250 Niños",
+    "precio": 99.95,
+    "precioList": 119.95,
+    "categoria": "Auriculares",
+    "imagen": "rugged-air-RA250.jpg"
   },
   {
     "id": 20,
@@ -206,5 +206,77 @@
     "precioList": 199.95,
     "categoria": "Auriculares",
     "imagen": "airclassic-hs1a.jpg"
+  },
+  {
+    "id": 27,
+    "nombre": "Overol de vuelo Nomex CWU 27/P",
+    "precio": 209.99,
+    "precioList": 249.99,
+    "categoria": "Apariencia",
+    "imagen": "cwu-27p-suit.jpg"
+  },
+  {
+    "id": 28,
+    "nombre": "Remera Watch your attitude",
+    "precio": 13.95,
+    "precioList": 19.95,
+    "categoria": "Apariencia",
+    "imagen": "attitude-tshirt.jpg"
+  },
+  {
+    "id": 29,
+    "nombre": "Remera Piper Clasica",
+    "precio": 36.99,
+    "precioList": 50.99,
+    "categoria": "Apariencia",
+    "imagen": "piper-tshirt.jpg"
+  },
+  {
+    "id": 30,
+    "nombre": "Transceptor Icom IC-A25C Sport",
+    "precio": 349.95,
+    "precioList": 599.95,
+    "categoria": "Comunicacion",
+    "imagen": "icom-ica25.jpg"
+  },
+  {
+    "id": 31,
+    "nombre": "Transceptor VHF Icom IC-A120",
+    "precio": 999.0,
+    "precioList": 1199.0,
+    "categoria": "Comunicacion",
+    "imagen": "icom-ica120-vhf.jpg"
+  },
+  {
+    "id": 32,
+    "nombre": "Transceptor Yaesu FTA-250L",
+    "precio": 219.95,
+    "precioList": 330.95,
+    "categoria": "Comunicacion",
+    "imagen": "yaesu-fta-250l.jpg"
+  },
+  {
+    "id": 33,
+    "nombre": "Computadora de vuelo ASA Micro E6-B",
+    "precio": 36.95,
+    "precioList": 45.95,
+    "categoria": "Computadoras de Vuelo",
+    "imagen": "micro-e6b.jpg"
+  },
+  {
+    "id": 34,
+    "nombre": "Computadora de vuelo Jeppensen Student CSG (E6B)",
+    "precio": 15.95,
+    "precioList": 20.95,
+    "categoria": "Computadoras de Vuelo",
+    "imagen": "jeppensen-student-csg.jpg"
+  },
+  {
+    "id": 35,
+    "nombre": "Computadora y orientador de patron de trafico APR TPA-303",
+    "precio": 14.95,
+    "precioList": 19.95,
+    "categoria": "Computadoras de Vuelo",
+    "imagen": "apr-tpa-303-pattern.jpg"
   }
 ]

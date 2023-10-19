@@ -163,6 +163,12 @@ footer {
   color: white;
   background-color: #727272;
   box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+  transition: all 0.5s ease;
+}
+
+#productCategories a i:hover {
+  transform: scale(1.05);
+  background-color: black;
 }
 
 .bxs-cart {
@@ -224,6 +230,7 @@ footer {
 }
 
 .cartItem {
+  width: 380px;
   border-bottom: 1px solid #b5b5b5;
   padding: 10px 0;
   box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1);
