@@ -239,42 +239,44 @@ const loginBox = document.querySelector(".loginBox");
 
 // Prevengo la accion default del link para cambiar de formulario
 // y cambio el form completo con el de registro
-// btnRegistrar.addEventListener("click", (event) => {
-//   event.preventDefault();
-//   loginBox.innerHTML = `
-//   <div class="loginBox">
-//           <form class="login">
-//             <span class="loginTitle">Registrarse</span>
-//             <span class="loginSubtitle"
-//               >Crea tu cuenta con tu correo electronico</span
-//             >
-//             <div class="loginContainer">
-//                <input
-//                id="username"
-//                type="text"
-//                class="loginInput"
-//                placeholder="Nombre de Usuario">
-//               <input
-//                 id="email"
-//                 type="email"
-//                 class="loginInput"
-//                 placeholder="Correo Electronico"
-//               />
-//               <input
-//                 id="password"
-//                 type="password"
-//                 class="loginInput"
-//                 placeholder="Contraseña"
-//               />
-//             </div>
-//             <button class="btnSubmit">Iniciar Sesion</button>
-//           </form>
-//           <div class="loginFooter">
-//             <p>
-//               ¿Ya tienes cuenta? <a id="btnRegister" href="">Inicia Sesion</a>
-//             </p>
-//           </div>
-//         </div>
-//       </section>
-//   `;
-// });
+if (btnRegistrar !== null) {
+  btnRegistrar.addEventListener("click", (event) => {
+    event.preventDefault();
+    loginBox.innerHTML = `
+    <div class="loginBox">
+            <form class="login">
+              <span class="loginTitle">Registrarse</span>
+              <span class="loginSubtitle"
+                >Crea tu cuenta con tu correo electronico</span
+              >
+              <div class="loginContainer">
+                 <input
+                 id="username"
+                 type="text"
+                 class="loginInput"
+                 placeholder="Nombre de Usuario">
+                <input
+                  id="email"
+                  type="email"
+                  class="loginInput"
+                  placeholder="Correo Electronico"
+                />
+                <input
+                  id="password"
+                  type="password"
+                  class="loginInput"
+                  placeholder="Contraseña"
+                />
+              </div>
+              <button class="btnSubmit">Iniciar Sesion</button>
+            </form>
+            <div class="loginFooter">
+              <p>
+                ¿Ya tienes cuenta? <a id="btnRegister" href="">Inicia Sesion</a>
+              </p>
+            </div>
+          </div>
+        </section>
+    `;
+  });
+}
