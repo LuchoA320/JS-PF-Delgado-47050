@@ -12,7 +12,9 @@ let list = document.querySelector(".cartList");
 let listaCarrito = document.querySelector(".cartCard");
 let totalCarrito = document.querySelector(".total");
 let cantidad = document.querySelector(".cartQuantity");
-let sectionFeatured = document.querySelector("#featuredProducts");
+let catalogoProductos = document.querySelector("#productsCatalogue");
+let botonCategoria = document.querySelectorAll(".btnCategories");
+let tituloCategoria = document.querySelector("#titleCategories");
 
 // Traigo el carrito del storage
 const carritoStorage = JSON.parse(localStorage.getItem("carrito"));
@@ -37,86 +39,63 @@ class DataBase {
   constructor() {
     // Array vacio del catalogo
     this.catalogo = [];
-    // ===== INSTANCIACION DE PRODUCTOS =====
-    this.instanciarProducto(
-      1,
-      "Auriculares Bose A20 Bluetooth",
-      1099.0,
-      1195.0,
-      "Headsets",
-      "BoseA20-1.jpg"
-    );
-    this.instanciarProducto(
-      2,
-      "Auriculares Bose A30 Bluetooth",
-      1299.65,
-      1495.65,
-      "Headsets",
-      "BoseA30-1.jpg"
-    );
-    this.instanciarProducto(
-      3,
-      "Reloj Garmin D2 Mach 1 Aviator",
-      1199.0,
-      1399.0,
-      "Watches",
-      "garminD2-1.jpg"
-    );
-    this.instanciarProducto(
-      4,
-      "Computadora de vuelo ASA CX-3 Pathfinder",
-      117.45,
-      124.95,
-      "Flight Computers",
-      "ASA-CX3-1.jpg"
-    );
-    this.instanciarProducto(
-      5,
-      "Auriculares David Clark H10-13.4",
-      356.95,
-      391.65,
-      "Headsets",
-      "davidclarkH10-1.jpg"
-    );
+    //
+    this.cargarCatalogo();
   }
-  // Metodo para instanciar productos dinamicamente y agregarlos al catalogo
-  instanciarProducto(id, nombre, precio, precioList, categoria, imagen) {
-    const producto = new Product(
-      id,
-      nombre,
-      precio,
-      precioList,
-      categoria,
-      imagen
-    );
-    // Push automatico del producto al catalogo
-    this.catalogo.push(producto);
+  async cargarCatalogo() {
+    const resultado = await fetch("./json/catalogo.json");
+    this.catalogo = await resultado.json();
+    console.log(this.catalogo);
+    cargarProductos(this.catalogo);
   }
   // Metodo para listar el catalogo citando a la base de datos
   listarProductos() {
     return this.catalogo;
   }
+  // Metodo para buscar un producto por su ID
   productoPorId(id) {
     return this.catalogo.find((producto) => producto.id === id);
   }
+  // Metodo para buscar un producto por su Nombre
   productoPorNombre(palabra) {
     return this.catalogo.filter((producto) =>
       producto.nombre.toLowerCase().includes(palabra.toLowerCase())
     );
   }
+  // Metodo para filtrar productos por su categoria
+  productoPorCategoria(categoria) {
+    return this.catalogo.filter((producto) => producto.categoria == categoria);
+  }
 }
 // Instanciamos la base de datos
 const dB = new DataBase();
 
+botonCategoria.forEach((boton) => {
+  boton.addEventListener("click", (event) => {
+    //Prevengo recargar la pagina al tocar el boton
+    event.preventDefault();
+    const categoria = boton.dataset.categoria;
+    // Si la categoria seleccionada es todos, listo el catalogo sin filtros
+    if (categoria == "Todos") {
+      tituloCategoria.innerText = `Todos Los Productos`;
+      cargarProductos(dB.listarProductos());
+    } else {
+      // Si no, muestro la categoria seleccionada
+      cargarProductos(dB.productoPorCategoria(categoria));
+      // Cambio el titular de la seccion al nombre de la categoria
+      tituloCategoria.innerText = `${categoria}`;
+    }
+  });
+});
 // Mostramos el catalogo de la base de datos apenas carga la pagina
 cargarProductos(dB.listarProductos());
 // Funcion para mostrar los productos del catalogo
 function cargarProductos(productos) {
-  if (sectionFeatured !== null) {
-    sectionFeatured.innerHTML = "";
+  if (catalogoProductos !== null) {
+    catalogoProductos.innerHTML = "";
 
     for (const producto of productos) {
-      sectionFeatured.innerHTML += `
+      catalogoProductos.innerHTML += `
     <article class="productCard">
           <img src="./assets/images/products/${producto.imagen}" alt="${producto.nombre}">
 
@@ -211,7 +190,7 @@ function listarCarrito() {
   let listaCarrito = "";
   // Por cada producto agregado al array Carrito, agrega un List Item con las propiedades del mismo a la lista del carrito
   carrito.forEach((producto) => {
-    listaCarrito += `<li class="cartItem"> <img src="./assets/images/products/${producto.imagen}"/>
+    listaCarrito += `<li class="cartItem"> <img src="/assets/images/products/${producto.imagen}"/>
     <div>
     <h3>${producto.nombre}</h3>
 
@@ -260,42 +239,42 @@ const loginBox = document.querySelector(".loginBox");
 
 // Prevengo la accion default del link para cambiar de formulario
 // y cambio el form completo con el de registro
-btnRegistrar.addEventListener("click", (event) => {
-  event.preventDefault();
-  loginBox.innerHTML = `
-  <div class="loginBox">
-          <form class="login">
-            <span class="loginTitle">Registrarse</span>
-            <span class="loginSubtitle"
-              >Crea tu cuenta con tu correo electronico</span
-            >
-            <div class="loginContainer">
-               <input
-               id="username"
-               type="text"
-               class="loginInput"
-               placeholder="Nombre de Usuario">
-              <input
-                id="email"
-                type="email"
-                class="loginInput"
-                placeholder="Correo Electronico"
-              />
-              <input
-                id="password"
-                type="password"
-                class="loginInput"
-                placeholder="Contraseña"
-              />
-            </div>
-            <button class="btnSubmit">Iniciar Sesion</button>
-          </form>
-          <div class="loginFooter">
-            <p>
-              ¿Ya tienes cuenta? <a id="btnRegister" href="">Inicia Sesion</a>
-            </p>
-          </div>
-        </div>
-      </section>
-  `;
-});
+// btnRegistrar.addEventListener("click", (event) => {
+//   event.preventDefault();
+//   loginBox.innerHTML = `
+//   <div class="loginBox">
+//           <form class="login">
+//             <span class="loginTitle">Registrarse</span>
+//             <span class="loginSubtitle"
+//               >Crea tu cuenta con tu correo electronico</span
+//             >
+//             <div class="loginContainer">
+//                <input
+//                id="username"
+//                type="text"
+//                class="loginInput"
+//                placeholder="Nombre de Usuario">
+//               <input
+//                 id="email"
+//                 type="email"
+//                 class="loginInput"
+//                 placeholder="Correo Electronico"
+//               />
+//               <input
+//                 id="password"
+//                 type="password"
+//                 class="loginInput"
+//                 placeholder="Contraseña"
+//               />
+//             </div>
+//             <button class="btnSubmit">Iniciar Sesion</button>
+//           </form>
+//           <div class="loginFooter">
+//             <p>
+//               ¿Ya tienes cuenta? <a id="btnRegister" href="">Inicia Sesion</a>
+//             </p>
+//           </div>
+//         </div>
+//       </section>
+//   `;
+// });

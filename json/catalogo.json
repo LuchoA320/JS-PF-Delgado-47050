@@ -1,0 +1,210 @@
+[
+  {
+    "id": 1,
+    "nombre": "Auriculares Bose A20 Bluetooth",
+    "precio": 1099.0,
+    "precioList": 1195.0,
+    "categoria": "Auriculares",
+    "imagen": "BoseA20-1.jpg"
+  },
+  {
+    "id": 2,
+    "nombre": "Auriculares Bose A30 Bluetooth",
+    "precio": 1299.65,
+    "precioList": 1495.65,
+    "categoria": "Auriculares",
+    "imagen": "BoseA30-1.jpg"
+  },
+  {
+    "id": 3,
+    "nombre": "Reloj Garmin D2 Mach 1 Aviator",
+    "precio": 1199.0,
+    "precioList": 1399.0,
+    "categoria": "Relojes",
+    "imagen": "garminD2M1-1.jpg"
+  },
+  {
+    "id": 4,
+    "nombre": "Computadora de vuelo ASA CX-3 Pathfinder",
+    "precio": 117.45,
+    "precioList": 124.95,
+    "categoria": "Computadoras de Vuelo",
+    "imagen": "ASA-CX3-1.jpg"
+  },
+  {
+    "id": 5,
+    "nombre": "Auriculares David Clark H10-13.4",
+    "precio": 356.95,
+    "precioList": 391.65,
+    "categoria": "Auriculares",
+    "imagen": "davidclarkH10-1.jpg"
+  },
+  {
+    "id": 6,
+    "nombre": "Transceptor Icom IC-A16",
+    "precio": 269.95,
+    "precioList": 441.0,
+    "categoria": "Comunicacion",
+    "imagen": "icom-ICA16-1.jpg"
+  },
+  {
+    "id": 7,
+    "nombre": "Reloj Garmin D2 Aviator",
+    "precio": 439.0,
+    "precioList": 499.0,
+    "categoria": "Relojes",
+    "imagen": "garmin-D2-1.jpg"
+  },
+  {
+    "id": 8,
+    "nombre": "Transceptor Yaesu FTA-450L",
+    "precio": 249.95,
+    "precioList": 399.0,
+    "categoria": "Comunicacion",
+    "imagen": "Yaesu-FTA-450L-1.jpg"
+  },
+  {
+    "id": 9,
+    "nombre": "Auriculares David Clark ONE-X ANR",
+    "precio": 895.0,
+    "precioList": 995.0,
+    "categoria": "Auriculares",
+    "imagen": "davidclark-ONEX.jpg"
+  },
+  {
+    "id": 10,
+    "nombre": "Gorra Piper Bordada",
+    "precio": 26.99,
+    "precioList": 29.99,
+    "categoria": "Apariencia",
+    "imagen": "piper-cap.jpg"
+  },
+  {
+    "id": 11,
+    "nombre": "Reloj Citizen Blue Angels cronografo (AT8020-03L)",
+    "precio": 469.0,
+    "precioList": 675.0,
+    "categoria": "Relojes",
+    "imagen": "citizen-blue-angels-1.jpg"
+  },
+  {
+    "id": 12,
+    "nombre": "Auriculares Lightspeed Sierra",
+    "precio": 599.0,
+    "precioList": 629.0,
+    "categoria": "Auriculares",
+    "imagen": "lightspeed-sierra.jpg"
+  },
+  {
+    "id": 13,
+    "nombre": "Campera de Cuero Cockpit USA Antique A2",
+    "precio": 595.0,
+    "precioList": 680.0,
+    "categoria": "Apariencia",
+    "imagen": "cockpit-usa-a2.jpg"
+  },
+  {
+    "id": 14,
+    "nombre": "Pin de plata Cessna 172",
+    "precio": 9.95,
+    "precioList": 12.95,
+    "categoria": "Apariencia",
+    "imagen": "pin-cessna-172.jpg"
+  },
+  {
+    "id": 15,
+    "nombre": "Reloj Garmin D2 Air X10 Aviator",
+    "precio": 549.99,
+    "precioList": 599.99,
+    "categoria": "Relojes",
+    "imagen": "garmin-d2-X10.jpg"
+  },
+  {
+    "id": 16,
+    "nombre": "Auriculares Lightspeed Zulu 3 ANR",
+    "precio": 899.0,
+    "precioList": 929.95,
+    "categoria": "Auriculares",
+    "imagen": "lightspeed-zulu.jpg"
+  },
+  {
+    "id": 17,
+    "nombre": "Gorra Cessna Bordada",
+    "precio": 26.95,
+    "precioList": 29.95,
+    "categoria": "Apariencia",
+    "imagen": "cessna-cap.jpg"
+  },
+  {
+    "id": 18,
+    "nombre": "Campera Cockpit USA R.A.F Bomber",
+    "precio": 1210.0,
+    "precioList": 1370.0,
+    "categoria": "Apariencia",
+    "imagen": "cockpit-usa-RAF-bomber.jpg"
+  },
+  {
+    "id": 19,
+    "nombre": "Reloj Abingdon Elise Zulu",
+    "precio": 494.0,
+    "precioList": 549.0,
+    "categoria": "Relojes",
+    "imagen": "abingdon-elise.jpg"
+  },
+  {
+    "id": 20,
+    "nombre": "Reloj Casio Pro Trek PRG-270-1",
+    "precio": 145.0,
+    "precioList": 200.0,
+    "categoria": "Relojes",
+    "imagen": "casio-pro-trek-270.jpg"
+  },
+  {
+    "id": 21,
+    "nombre": "Auriculares Lightspeed Delta Zulu",
+    "precio": 1199.0,
+    "precioList": 1349.0,
+    "categoria": "Auriculares",
+    "imagen": "lightspeed-delta-zulu.jpg"
+  },
+  {
+    "id": 22,
+    "nombre": "Campera Cockpit USA Navy Issue Type G-1",
+    "precio": 513.0,
+    "precioList": 570.0,
+    "categoria": "Apariencia",
+    "imagen": "cockpit-usa-type-g1.jpg"
+  },
+  {
+    "id": 23,
+    "nombre": "Computadora de vuelo de aluminio E6-B",
+    "precio": 39.95,
+    "precioList": 49.95,
+    "categoria": "Computadoras de Vuelo",
+    "imagen": "E6-B-aluminum.jpg"
+  },
+  {
+    "id": 24,
+    "nombre": "Auriculares Pilot USA P-1151 ACG",
+    "precio": 130.0,
+    "precioList": 140.0,
+    "categoria": "Auriculares",
+    "imagen": "pilot-usa-p1151.jpg"
+  },
+  {
+    "id": 25,
+    "nombre": "Gorra North American P51 Mustang Bordada",
+    "precio": 26.99,
+    "precioList": 29.99,
+    "categoria": "Apariencia",
+    "imagen": "p51-mustang-cap.jpg"
+  },
+  {
+    "id": 26,
+    "nombre": "Auriculares AirClassics HS-1A",
+    "precio": 149.95,
+    "precioList": 199.95,
+    "categoria": "Auriculares",
+    "imagen": "airclassic-hs1a.jpg"
+  }
+]

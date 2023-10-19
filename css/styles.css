@@ -54,7 +54,6 @@ ul {
   list-style-type: none;
 }
 #mainIndex {
-  height: 100vh;
   background-color: #eeeeee;
 }
 
@@ -96,7 +95,7 @@ footer {
   transition: 0.8s;
 }
 
-#featuredProducts {
+#productsCatalogue {
   display: flex;
   flex-wrap: wrap;
   justify-content: space-around;
@@ -140,6 +139,32 @@ footer {
   color: #ffff;
   border-radius: 30px;
 }
+
+#productCategories {
+  background-color: white;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+}
+
+#productCategories a {
+  font-size: 1.5rem;
+  text-decoration: none;
+  display: flex;
+  color: #727272;
+  align-items: center;
+  flex-direction: column;
+}
+#productCategories a i {
+  margin: 10px;
+  padding: 10px;
+  border-radius: 30px;
+  font-size: 3rem;
+  color: white;
+  background-color: #727272;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+}
+
 .bxs-cart {
   font-size: 1.7rem;
   font-weight: bold;
