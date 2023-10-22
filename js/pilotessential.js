@@ -284,7 +284,9 @@ function agregarUsuario(event) {
   document.forms[0].reset();
   console.log(usuarios);
 }
-btnSubmit.addEventListener("click", agregarUsuario);
+if (btnSubmit !== null) {
+  btnSubmit.addEventListener("click", agregarUsuario);
+}
 
 // Prevengo la accion default del link para cambiar de formulario
 // y cambio el form completo con el de registro
