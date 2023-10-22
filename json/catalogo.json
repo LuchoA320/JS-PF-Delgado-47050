@@ -278,5 +278,45 @@
     "precioList": 19.95,
     "categoria": "Computadoras de Vuelo",
     "imagen": "apr-tpa-303-pattern.jpg"
+  },
+  {
+    "id": 36,
+    "nombre": "Chaleco de seguridad reflectante operaciones en tierra",
+    "precio": 16.95,
+    "precioList": 24.95,
+    "categoria": "Accesorios",
+    "imagen": "safety-vest-ground.jpg"
+  },
+  {
+    "id": 37,
+    "nombre": "Bolso para Auriculares David Clark",
+    "precio": 22.55,
+    "precioList": 32.55,
+    "categoria": "Accesorios",
+    "imagen": "davidclark-headset-bag.jpg"
+  },
+  {
+    "id": 38,
+    "nombre": "Mochila de vuelo AirClassic",
+    "precio": 99.95,
+    "precioList": 109.95,
+    "categoria": "Accesorios",
+    "imagen": "airclassic-pilot-backpack.jpg"
+  },
+  {
+    "id": 39,
+    "nombre": "Linterna LED cuatruple Smith & Wesson",
+    "precio": 24.95,
+    "precioList": 31.99,
+    "categoria": "Accesorios",
+    "imagen": "smith-wesson-flashlight.jpg"
+  },
+  {
+    "id": 40,
+    "nombre": "Linterna de cabeza LED Smith & Wesson",
+    "precio": 35.95,
+    "precioList": 47.99,
+    "categoria": "Accesorios",
+    "imagen": "smith-wesson-headlamp.jpg"
   }
 ]

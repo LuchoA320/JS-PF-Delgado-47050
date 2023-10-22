@@ -15,6 +15,10 @@ let cantidad = document.querySelector(".cartQuantity");
 let catalogoProductos = document.querySelector("#productsCatalogue");
 let botonCategoria = document.querySelectorAll(".btnCategories");
 let tituloCategoria = document.querySelector("#titleCategories");
+let botonComprar = document.querySelector(".btnComprar");
+const inputBuscar = document.querySelector("#searchInput");
+const sectionCategorias = document.querySelector("#productCategories");
+const formBuscar = document.querySelector("#searchForm");
 
 // Traigo el carrito del storage
 const carritoStorage = JSON.parse(localStorage.getItem("carrito"));
@@ -43,7 +47,7 @@ class DataBase {
     this.cargarCatalogo();
   }
   async cargarCatalogo() {
-    const resultado = await fetch("./json/catalogo.json");
+    const resultado = await fetch("/json/catalogo.json");
     this.catalogo = await resultado.json();
     console.log(this.catalogo);
     cargarProductos(this.catalogo);
@@ -69,6 +73,20 @@ class DataBase {
 }
 // Instanciamos la base de datos
 const dB = new DataBase();
+
+// Buscador De Productos
+if (formBuscar != null) {
+  formBuscar.addEventListener("submit", (event) => {
+    event.preventDefault();
+    // realizo la busqueda con el value del input de busqueda
+    const busqueda = inputBuscar.value;
+    const productos = dB.productoPorNombre(busqueda);
+    // hago scroll hacia la seccion de productos
+    window.scrollTo(0, 650);
+    cargarProductos(productos);
+    tituloCategoria.innerText = `Resultados de la busqueda`;
+  });
+}
 
 botonCategoria.forEach((boton) => {
   boton.addEventListener("click", (event) => {
@@ -159,8 +177,10 @@ function agregar(producto) {
   }
 
   // Alert indicando que el producto se agrego satisfactoriamente.
-  swal(producto.nombre + " fue agregado al carrito.", {
-    buttons: ["Seguir Comprando", "Ver Carrito"],
+  swal.fire({
+    text: `${producto.nombre} fue agregado al carrito.`,
+    confirmButtonText: "Continuar",
+    confirmButtonColor: "#0b2742",
   });
   // Guardo el storage
   localStorage.setItem("carrito", JSON.stringify(carrito));
@@ -227,22 +247,51 @@ function listarCarrito() {
       quitar(idProducto);
     });
   });
+
+  if (cartLenght > 0) {
+    botonComprar.classList.remove("disabled");
+    totalCarrito.style.display = "block";
+  } else {
+    botonComprar.classList.add("disabled");
+    totalCarrito.style.display = "none";
+  }
 }
 
-const botonComprar = document.querySelector(".btnComprar");
 botonComprar.addEventListener("click", () => {
   window.location = "https://www.youtube.com/watch?v=dQw4w9WgXcQ";
 });
 
-const btnRegistrar = document.querySelector("#btnRegister");
-const loginBox = document.querySelector(".loginBox");
+// ===== SECCION LOGIN Y REGISTER =====
+
+let usuarioInput = document.querySelector("#username");
+let correoInput = document.querySelector("#email");
+let contraseñaInput = document.querySelector("#password");
+const btnLogin = document.querySelector("#btnLogin");
+const registerBox = document.querySelector(".registerBox");
+const formRegistro = document.querySelector("#registerForm");
+let btnSubmit = document.querySelector(".btnSubmit");
+
+// Array Vacio de los usuarios
+const usuarios = [];
+function agregarUsuario(event) {
+  event.preventDefault();
+  let nuevoUsuario = {
+    nombre: usuarioInput.value,
+    correo: correoInput.value,
+    contraseña: contraseñaInput.value,
+  };
+  usuarios.push(nuevoUsuario);
+  document.forms[0].reset();
+  console.log(usuarios);
+}
+btnSubmit.addEventListener("click", agregarUsuario);
 
 // Prevengo la accion default del link para cambiar de formulario
 // y cambio el form completo con el de registro
-if (btnRegistrar !== null) {
-  btnRegistrar.addEventListener("click", (event) => {
+if (btnLogin !== null) {
+  btnLogin.addEventListener("click", (event) => {
     event.preventDefault();
-    loginBox.innerHTML = `
+    registerBox.innerHTML = `
     <div class="loginBox">
             <form class="login">
               <span class="loginTitle">Registrarse</span>

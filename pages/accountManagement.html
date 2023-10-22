@@ -1,60 +1,99 @@
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Pilot Essential - Inicia sesion o crea tu cuenta</title>
-    <link
-      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css"
-      rel="stylesheet"
-      integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9"
-      crossorigin="anonymous"
-    />
-    <link
-      href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css"
-      rel="stylesheet"
-    />
-    <link rel="stylesheet" href="../css/styles.css" />
-  </head>
-  <body id="accountBodyBG">
-    <header>
-      <section class="header">
-        <a href="" class="logo">
-          <img
-            src="../assets/images/logo.png"
-            alt="Pilot Essential"
-            width="200"
-          />
-        </a>
+<DOCTYPE html>
+  <html lang="en">
+    <head>
+      <meta charset="UTF-8" />
+      <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <title>Pilot Essential - Inicia sesion o crea tu cuenta</title>
+      <link
+        href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css"
+        rel="stylesheet"
+        integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9"
+        crossorigin="anonymous"
+      />
+      <link
+        href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css"
+        rel="stylesheet"
+      />
+      <link rel="stylesheet" href="../css/styles.css" />
+    </head>
+    <body id="accountBodyBG">
+      <header>
+        <section class="header">
+          <a href="" class="logo">
+            <img
+              src="../assets/images/logo.png"
+              alt="Pilot Essential"
+              width="200"
+            />
+          </a>
 
-        <nav class="navbar">
-          <a href="../index.html">Inicio</a>
-          <a href="#">Categorias</a>
-          <a href="#">Nosotros</a>
-          <a href="#">Contacto</a>
-          <a href="accountManagement.html">Mi Cuenta</a>
-          <a href="#" class="Cart"
-            ><i class="bx bxs-cart"></i> <span class="cartQuantity">0</span></a
-          >
-        </nav>
-      </section>
-      <!-- ====== Cart Section (Disabled until Active class is called) ====== -->
-      <aside class="cartCard">
-        <h2 class="text-center">Carrito</h2>
-        <ul class="cartList">
-          <p class="text-center">¡Tu carrito está vacio!</p>
-        </ul>
-        <div class="total p-1">Subotal:</div>
-        <article class="cartCheckout">
-          <div class="btn btnComprar">Continuar</div>
-          <a href=""></a>
-          <div class="closeCart btn">Cerrar</div>
-        </article>
-      </aside>
-    </header>
-    <main>
-      <section class="d-flex justify-content-center">
-        <div class="loginBox m-5">
+          <nav class="navbar">
+            <a href="../index.html">Inicio</a>
+            <a href="#">Categorias</a>
+            <a href="#">Nosotros</a>
+            <a href="#">Contacto</a>
+            <a href="accountManagement.html">Mi Cuenta</a>
+            <a href="#" class="Cart"
+              ><i class="bx bxs-cart"></i>
+              <span class="cartQuantity">0</span></a
+            >
+          </nav>
+        </section>
+        <!-- ====== Cart Section (Disabled until Active class is called) ====== -->
+        <aside class="cartCard">
+          <h2 class="text-center">Carrito</h2>
+          <ul class="cartList">
+            <p class="text-center">¡Tu carrito está vacio!</p>
+          </ul>
+          <div class="total p-1">Subotal:</div>
+          <article class="cartCheckout">
+            <div class="btn btnComprar">Continuar</div>
+            <a href=""></a>
+            <div class="closeCart btn">Cerrar</div>
+          </article>
+        </aside>
+      </header>
+      <main>
+        <section class="d-flex justify-content-center">
+          <div class="registerBox m-5">
+            <form class="register" id="registerForm">
+              <span class="registerTitle">Registrarse</span>
+              <span class="registerSubtitle"
+                >Crea tu cuenta con tu correo electronico</span
+              >
+              <div class="registerContainer">
+                <input
+                  id="username"
+                  type="text"
+                  class="registerInput"
+                  placeholder="Nombre de Usuario"
+                  required
+                />
+                <input
+                  id="email"
+                  type="email"
+                  class="registerInput"
+                  placeholder="Correo Electronico"
+                  required
+                />
+                <input
+                  id="password"
+                  type="password"
+                  class="registerInput"
+                  placeholder="Contraseña"
+                  required
+                />
+              </div>
+              <button class="btnSubmit">Registrarse</button>
+            </form>
+            <div class="registerFooter">
+              <p>
+                ¿Ya tienes cuenta? <a id="btnLogin" href="">Inicia Sesion</a>
+              </p>
+            </div>
+          </div>
+
+          <!-- <div class="loginBox m-5">
           <form class="login">
             <span class="loginTitle">Iniciar Sesion</span>
             <span class="loginSubtitle"
@@ -80,17 +119,18 @@
               ¿No tienes cuenta? <a id="btnRegister" href="">Registrarse</a>
             </p>
           </div>
-        </div>
-      </section>
-    </main>
+        </div> -->
+        </section>
+      </main>
 
-    <script src="../js/pilotessential.js"></script>
-    <script
-      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"
-      integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm"
-      crossorigin="anonymous"
-    ></script>
+      <script src="../js/pilotessential.js"></script>
+      <script
+        src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm"
+        crossorigin="anonymous"
+      ></script>
 
-    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
-  </body>
-</html>
+      <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+    </body>
+  </html>
+</DOCTYPE>
