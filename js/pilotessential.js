@@ -270,9 +270,12 @@ const btnLogin = document.querySelector("#btnLogin");
 const registerBox = document.querySelector(".registerBox");
 const formRegistro = document.querySelector("#registerForm");
 let btnSubmit = document.querySelector(".btnSubmit");
+const formLogin = document.querySelector("#formLogin");
 
 // Array Vacio de los usuarios
-const usuarios = [];
+const usuariosStorage = JSON.parse(localStorage.getItem("usuarios"));
+// Si existe un carrito en el storage, lo traigo, si no, pongo un array vacio
+const usuarios = usuariosStorage || [];
 function agregarUsuario(event) {
   event.preventDefault();
   let nuevoUsuario = {
@@ -283,6 +286,7 @@ function agregarUsuario(event) {
   usuarios.push(nuevoUsuario);
   document.forms[0].reset();
   console.log(usuarios);
+  localStorage.setItem("usuarios", JSON.stringify(usuarios));
 }
 if (btnSubmit !== null) {
   btnSubmit.addEventListener("click", agregarUsuario);
@@ -293,41 +297,7 @@ if (btnSubmit !== null) {
 if (btnLogin !== null) {
   btnLogin.addEventListener("click", (event) => {
     event.preventDefault();
-    registerBox.innerHTML = `
-    <div class="loginBox">
-            <form class="login">
-              <span class="loginTitle">Registrarse</span>
-              <span class="loginSubtitle"
-                >Crea tu cuenta con tu correo electronico</span
-              >
-              <div class="loginContainer">
-                 <input
-                 id="username"
-                 type="text"
-                 class="loginInput"
-                 placeholder="Nombre de Usuario">
-                <input
-                  id="email"
-                  type="email"
-                  class="loginInput"
-                  placeholder="Correo Electronico"
-                />
-                <input
-                  id="password"
-                  type="password"
-                  class="loginInput"
-                  placeholder="Contraseña"
-                />
-              </div>
-              <button class="btnSubmit">Iniciar Sesion</button>
-            </form>
-            <div class="loginFooter">
-              <p>
-                ¿Ya tienes cuenta? <a id="btnRegister" href="">Inicia Sesion</a>
-              </p>
-            </div>
-          </div>
-        </section>
-    `;
+    formLogin.classList.remove("hide");
+    formRegistro.classList.add("hide");
   });
 }

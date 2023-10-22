@@ -358,3 +358,10 @@ footer a {
 .register button:hover {
   background-color: #2d97d4;
 }
+.hide {
+  display: none;
+}
+
+#formLogin {
+  position: absolute;
+}
