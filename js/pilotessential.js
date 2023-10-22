@@ -47,7 +47,7 @@ class DataBase {
     this.cargarCatalogo();
   }
   async cargarCatalogo() {
-    const resultado = await fetch("/json/catalogo.json");
+    const resultado = await fetch("./json/catalogo.json");
     this.catalogo = await resultado.json();
     console.log(this.catalogo);
     cargarProductos(this.catalogo);
