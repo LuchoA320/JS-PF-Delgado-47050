@@ -57,6 +57,10 @@ ul {
   background-color: #eeeeee;
 }
 
+#mainAccount {
+  height: 100vh;
+}
+
 footer {
   height: 20vh;
   background-color: #0b2742;
