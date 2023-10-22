@@ -210,7 +210,7 @@ function listarCarrito() {
   let listaCarrito = "";
   // Por cada producto agregado al array Carrito, agrega un List Item con las propiedades del mismo a la lista del carrito
   carrito.forEach((producto) => {
-    listaCarrito += `<li class="cartItem"> <img src="/assets/images/products/${producto.imagen}"/>
+    listaCarrito += `<li class="cartItem"> <img src="./assets/images/products/${producto.imagen}"/>
     <div>
     <h3>${producto.nombre}</h3>
 
