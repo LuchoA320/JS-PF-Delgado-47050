@@ -169,12 +169,10 @@ function agregar(producto) {
   const productoEnCarrito = enCarrito(producto);
   // Si el producto no se encuentra en el carrito, lo agrega al principio con unshift
   // y le suma la propiedad unidades
-  if (!productoEnCarrito) {
-    carrito.unshift({ ...producto, unidades: 1 });
-  } else {
-    // Si lo encuentra, le agrega una unidad
-    productoEnCarrito.unidades++;
-  }
+  // Si lo encuentra, le agrega una unidad
+  !productoEnCarrito
+    ? carrito.unshift({ ...producto, unidades: 1 })
+    : productoEnCarrito.unidades++;
 
   // Alert indicando que el producto se agrego satisfactoriamente.
   swal.fire({
@@ -193,12 +191,11 @@ function quitar(id) {
   // Busco el indice del producto con findIndex
   const indiceProducto = carrito.findIndex((producto) => producto.id === id);
   // Si la cantidad de este producto es mayor a 1 le resto una unidad
-  if (carrito[indiceProducto].unidades > 1) {
-    carrito[indiceProducto].unidades--;
-  } else {
-    // Si no, lo borro directamente con splice
-    carrito.splice(indiceProducto, 1);
-  }
+  // Si no, lo borro directamente con splice
+  carrito[indiceProducto].unidades > 1
+    ? carrito[indiceProducto].unidades--
+    : carrito.splice(indiceProducto, 1);
+
   // Guardo el storage
   localStorage.setItem("carrito", JSON.stringify(carrito));
   // Llamo a listar el carrito
